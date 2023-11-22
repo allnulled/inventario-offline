@@ -1,0 +1,87 @@
+asigno window.PaginaDeEditarItem como un componente vue2 con nombre "PaginaDeEditarItem" con plantilla {
+  <div class="PaginaDeEditarItem Component">
+    <xtitle>Página de editar ítem</xtitle>
+    <xbreadcrumb>
+      <xlink href="#/">Inicio</xlink>
+      <span> » </span>
+      <xlink :href="'#/ver/item/' + $route.params.id_item">Ver ítem</xlink>
+      <span> » </span>
+      <span>Editar ítem</span>
+    </xbreadcrumb>
+    <xpanel v-if="item">
+      <xform>
+        <xformfile ref="imagen" name="imagen">
+          <div>Imagen del ítem:</div>
+        </xformfile>
+        <template v-if="item.imagen">
+          <img :src="item.imagen" />
+        </template>
+        <xformfield ref="nombre" name="nombre" :input-value="item.nombre">Nombre del ítem:</xformfield>
+        <xformtext ref="descripcion" name="descripcion" :input-value="item.descripcion">Descripción del ítem:</xformtext>
+      </xform>
+    </xpanel>
+    <xlayoutnopaddingtop style="text-align: right;">
+      <span v-on:click="guardar_item">
+        <xbutton>Guardar ítem</xbutton>
+      </span>
+    </xlayoutnopaddingtop>
+  </div>
+} con lógica {
+  retorno {
+    propiedad props como {
+      propiedad root como {
+        propiedad type como Object.
+        propiedad required como true.
+      }.
+    }.
+    método data donde {
+      debugo "PaginaDeEditarItem.data".
+      retorno {
+        item: undefined
+      }.
+    }.
+    propiedad methods como {
+      método asíncrono guardar_item donde {
+        debugo "PaginaDeEditarItem.guardar_item".
+        creo nombre como this.$refs.nombre.$el.querySelector("input").value.
+        creo descripcion como this.$refs.descripcion.$el.querySelector("textarea").value.
+        creo imagen_fichero como asíncronamente this.$refs.imagen.obtener_fichero_seleccionado().
+        creo actualizado_en como una nueva Date().
+        creo variable imagen como undefined.
+        si imagen_fichero no es tipo indefinido {
+          asigno imagen como asíncronamente this.root.leer_fichero_como_url(imagen_fichero).
+        }.
+        creo db como asíncronamente this.root.obtener_conexion().
+        creo valor como { nombre, descripcion, actualizado_en }.
+        si imagen no es tipo indefinido {
+          asigno valor.imagen como imagen.
+        }.
+        creo respuesta_actualizar como asíncronamente db.update("item", this.item.id, valor).
+        hago this.$router.history.push("/ver/item/" + this.item.id).
+      }.
+      método asíncrono obtener_item donde {
+        debugo "PaginaDeEditarItem.obtener_item".
+        creo db como asíncronamente this.root.obtener_conexion().
+        creo items como asíncronamente db.select("item", una lambda con (item) donde {
+          retorno item.id es igual que parseInt(this.$route.params.id_item).
+        }).
+        asigno this.item como items[0].
+      }.
+    }.
+    propiedad watch como {}.
+    propiedad computed como {}.
+    método beforeCreate donde {}.
+    método created donde {}.
+    método beforeMount donde {}.
+    método asíncrono mounted donde {
+      debugo "PaginaDeEditarItem.mounted".
+      hago asíncronamente this.obtener_item().
+    }.
+    método beforeUpdate donde {}.
+    método updated donde {}.
+    método beforeUnmount donde {}.
+    método unmounted donde {}.
+    método activated donde {}.
+    método deactivated donde {}.
+  }.
+}.

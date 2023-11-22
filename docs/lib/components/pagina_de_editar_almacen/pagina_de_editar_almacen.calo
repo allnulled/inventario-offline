@@ -1,0 +1,73 @@
+asigno window.PaginaDeEditarAlmacen como un componente vue2 con nombre "PaginaDeEditarAlmacen" con plantilla {
+  <div class="PaginaDeEditarAlmacen Component">
+    <xtitle>Página de crear almacén</xtitle>
+    <xbreadcrumb>
+      <xlink href="#/">Inicio</xlink>
+      <span> » </span>
+      <xlink :href="'#/ver/almacen/' + $route.params.id_almacen">Ver almacén</xlink>
+      <span> » </span>
+      <span>Editar almacén</span>
+    </xbreadcrumb>
+    <xpanel v-if="almacen">
+      <xform>
+        <xformfield ref="nombre" name="nombre" :input-value="almacen.nombre">Nombre del almacén:</xformfield>
+        <xformtext ref="descripcion" name="descripcion" :input-value="almacen.descripcion">Descripción del almacén:</xformtext>
+      </xform>
+    </xpanel>
+    <xlayoutnopaddingtop style="text-align: right;">
+      <span v-on:click="guardar_almacen">
+        <xbutton>Guardar almacén</xbutton>
+      </span>
+    </xlayoutnopaddingtop>
+  </div>
+} con lógica {
+  retorno {
+    propiedad props como {
+      propiedad root como {
+        propiedad type como Object.
+        propiedad required como true.
+      }.
+    }.
+    método data donde {
+      debugo "PaginaDeEditarAlmacen.data".
+      retorno {
+        almacen: undefined
+      }.
+    }.
+    propiedad methods como {
+      método asíncrono guardar_almacen donde {
+        debugo "PaginaDeEditarAlmacen.guardar_almacen".
+        creo nombre como this.$refs.nombre.$el.querySelector("input").value.
+        creo descripcion como this.$refs.descripcion.$el.querySelector("textarea").value.
+        creo db como asíncronamente this.root.obtener_conexion().
+        creo respuesta_actualizar como asíncronamente db.update("almacen", this.almacen.id, { nombre, descripcion }).
+        imprimo respuesta_actualizar.
+        hago this.$router.history.push("/ver/almacen/" + this.almacen.id).
+      }.
+      método asíncrono obtener_almacen donde {
+        debugo "PaginaDeEditarAlmacen.obtener_almacen".
+        creo db como asíncronamente this.root.obtener_conexion().
+        creo almacenes como asíncronamente db.select("almacen", una lambda con (almacen) donde {
+          retorno almacen.id es igual que parseInt(this.$route.params.id_almacen).
+        }).
+        imprimo almacenes.
+        asigno this.almacen como almacenes[0].
+      }.
+    }.
+    propiedad watch como {}.
+    propiedad computed como {}.
+    método beforeCreate donde {}.
+    método created donde {}.
+    método beforeMount donde {}.
+    método asíncrono mounted donde {
+      debugo "PaginaDeEditarAlmacen.mounted".
+      hago asíncronamente this.obtener_almacen().
+    }.
+    método beforeUpdate donde {}.
+    método updated donde {}.
+    método beforeUnmount donde {}.
+    método unmounted donde {}.
+    método activated donde {}.
+    método deactivated donde {}.
+  }.
+}.

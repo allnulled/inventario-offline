@@ -1,0 +1,12 @@
+.xtable {
+    padding: 8px;
+}
+.xtable > div {
+    overflow: scroll;
+    min-height: 120px;
+    max-height: 220px;
+}
+.xtable > div > table {
+    border-collapse: collapse;
+    border: 1px solid #333;
+}

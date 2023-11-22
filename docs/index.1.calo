@@ -1,0 +1,212 @@
+Ejecutable como documento HTML5
+    con autor allnulled
+    con nombre index
+    con versión 1
+<head>
+    <title>🌐 Interfaz de usuario</title>
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="lib/win7/win7.scoped.2.css" />
+    <link rel="stylesheet" type="text/css" href="lib/ui-script/ui-script-styles.css" />
+    <link rel="stylesheet" type="text/css" href="lib/ui-script/components/xbreadcrumb/xbreadcrumb.css" />
+    <link rel="stylesheet" type="text/css" href="lib/ui-script/components/xpage/xpage.css" />
+    <link rel="stylesheet" type="text/css" href="lib/ui-script/components/xlink/xlink.css" />
+    <link rel="stylesheet" type="text/css" href="lib/ui-script/components/xform/xform.css" />
+    <link rel="stylesheet" type="text/css" href="lib/ui-script/components/xformfield/xformfield.css" />
+    <link rel="stylesheet" type="text/css" href="lib/ui-script/components/xformtext/xformtext.css" />
+    <link rel="stylesheet" type="text/css" href="lib/ui-script/components/xjumbotron/xjumbotron.css" />
+    <link rel="stylesheet" type="text/css" href="lib/ui-script/components/xlabel/xlabel.css" />
+    <link rel="stylesheet" type="text/css" href="lib/ui-script/components/xsubtitle/xsubtitle.css" />
+    <link rel="stylesheet" type="text/css" href="lib/ui-script/components/xtitle/xtitle.css" />
+    <link rel="stylesheet" type="text/css" href="lib/ui-script/components/xwindow/xwindow.css" />
+    <link rel="stylesheet" type="text/css" href="lib/ui-script/components/xwindowtitle/xwindowtitle.css" />
+    <link rel="stylesheet" type="text/css" href="lib/ui-script/components/xwindowbody/xwindowbody.css" />
+    <link rel="stylesheet" type="text/css" href="lib/ui-script/components/xwindowfooter/xwindowfooter.css" />
+    <link rel="stylesheet" type="text/css" href="lib/ui-script/components/xpanel/xpanel.css" />
+    <link rel="stylesheet" type="text/css" href="lib/ui-script/components/xbutton/xbutton.css" />
+    <link rel="stylesheet" type="text/css" href="lib/ui-script/components/xlayout/xlayout.css" />
+    <link rel="stylesheet" type="text/css" href="lib/ui-script/components/xlayoutnopaddingtop/xlayoutnopaddingtop.css" />
+    <link rel="stylesheet" type="text/css" href="lib/ui-script/components/xlayoutnopaddingbottom/xlayoutnopaddingbottom.css" />
+    <link rel="stylesheet" type="text/css" href="lib/ui-script/components/xwindowfooteritem/xwindowfooteritem.css" />
+    <link rel="stylesheet" type="text/css" href="lib/ui-script/components/xtable/xtable.css" />
+    <link rel="stylesheet" type="text/css" href="lib/ui-script/components/xtablerow/xtablerow.css" />
+    <link rel="stylesheet" type="text/css" href="lib/ui-script/components/xtablecell/xtablecell.css" />
+    <link rel="stylesheet" type="text/css" href="lib/ui-script/components/xlayoutcenterfixed/xlayoutcenterfixed.css" />
+    <link rel="stylesheet" type="text/css" href="lib/ui-script/components/xerrorport/xerrorport.css" />
+    <link rel="stylesheet" type="text/css" href="lib/ui-script/components/xcollapsible/xcollapsible.css" />
+    <link rel="stylesheet" type="text/css" href="lib/ui-script/components/xcollapsibleitem/xcollapsibleitem.css" />
+    <link rel="stylesheet" type="text/css" href="lib/ui-script/components/xlist/xlist.css" />
+    <link rel="stylesheet" type="text/css" href="lib/ui-script/components/xlistitem/xlistitem.css" />
+    <link rel="stylesheet" type="text/css" href="lib/ui-script/components/xparagraph/xparagraph.css" />
+    <link rel="stylesheet" type="text/css" href="lib/ui-script/components/xtableheader/xtableheader.css" />
+    <link rel="stylesheet" type="text/css" href="lib/ui-script/components/xformfile/xformfile.css" />
+    <link rel="stylesheet" type="text/css" href="lib/components/pagina_de_inicio/pagina_de_inicio.css" />
+    <link rel="stylesheet" type="text/css" href="lib/components/pagina_de_ver_almacen/pagina_de_ver_almacen.css" />
+    <link rel="stylesheet" type="text/css" href="lib/components/pagina_de_crear_almacen/pagina_de_crear_almacen.css" />
+    <link rel="stylesheet" type="text/css" href="lib/components/pagina_de_editar_almacen/pagina_de_editar_almacen.css" />
+    <link rel="stylesheet" type="text/css" href="lib/components/pagina_de_ver_item/pagina_de_ver_item.css" />
+    <link rel="stylesheet" type="text/css" href="lib/components/pagina_de_crear_item/pagina_de_crear_item.css" />
+    <link rel="stylesheet" type="text/css" href="lib/components/pagina_de_editar_item/pagina_de_editar_item.css" />
+    <script src="lib/calo/calo.js"></script>
+    <script src="lib/ui-script/ui-script-parser.js"></script>
+    <script src="lib/ui-script/ui-script-api.js"></script>
+    <script src="lib/ui-script/components/xpage/xpage.js"></script>
+    <script src="lib/ui-script/components/xlink/xlink.js"></script>
+    <script src="lib/ui-script/components/xbreadcrumb/xbreadcrumb.js"></script>
+    <script src="lib/ui-script/components/xform/xform.js"></script>
+    <script src="lib/ui-script/components/xformfield/xformfield.js"></script>
+    <script src="lib/ui-script/components/xformtext/xformtext.js"></script>
+    <script src="lib/ui-script/components/xjumbotron/xjumbotron.js"></script>
+    <script src="lib/ui-script/components/xlabel/xlabel.js"></script>
+    <script src="lib/ui-script/components/xsubtitle/xsubtitle.js"></script>
+    <script src="lib/ui-script/components/xtitle/xtitle.js"></script>
+    <script src="lib/ui-script/components/xwindow/xwindow.js"></script>
+    <script src="lib/ui-script/components/xwindowtitle/xwindowtitle.js"></script>
+    <script src="lib/ui-script/components/xwindowbody/xwindowbody.js"></script>
+    <script src="lib/ui-script/components/xwindowfooter/xwindowfooter.js"></script>
+    <script src="lib/ui-script/components/xpanel/xpanel.js"></script>
+    <script src="lib/ui-script/components/xbutton/xbutton.js"></script>
+    <script src="lib/ui-script/components/xlayout/xlayout.js"></script>
+    <script src="lib/ui-script/components/xlayoutnopaddingtop/xlayoutnopaddingtop.js"></script>
+    <script src="lib/ui-script/components/xlayoutnopaddingbottom/xlayoutnopaddingbottom.js"></script>
+    <script src="lib/ui-script/components/xwindowfooteritem/xwindowfooteritem.js"></script>
+    <script src="lib/ui-script/components/xtable/xtable.js"></script>
+    <script src="lib/ui-script/components/xtablerow/xtablerow.js"></script>
+    <script src="lib/ui-script/components/xtablecell/xtablecell.js"></script>
+    <script src="lib/ui-script/components/xlayoutcenterfixed/xlayoutcenterfixed.js"></script>
+    <script src="lib/ui-script/components/xerrorport/xerrorport.js"></script>
+    <script src="lib/ui-script/components/xcollapsible/xcollapsible.js"></script>
+    <script src="lib/ui-script/components/xcollapsibleitem/xcollapsibleitem.js"></script>
+    <script src="lib/ui-script/components/xlist/xlist.js"></script>
+    <script src="lib/ui-script/components/xlistitem/xlistitem.js"></script>
+    <script src="lib/ui-script/components/xparagraph/xparagraph.js"></script>
+    <script src="lib/ui-script/components/xtableheader/xtableheader.js"></script>
+    <script src="lib/ui-script/components/xformfile/xformfile.js"></script>
+    <script src="lib/components/pagina_de_inicio/pagina_de_inicio.js"></script>
+    <script src="lib/components/pagina_de_ver_almacen/pagina_de_ver_almacen.js"></script>
+    <script src="lib/components/pagina_de_crear_almacen/pagina_de_crear_almacen.js"></script>
+    <script src="lib/components/pagina_de_editar_almacen/pagina_de_editar_almacen.js"></script>
+    <script src="lib/components/pagina_de_ver_item/pagina_de_ver_item.js"></script>
+    <script src="lib/components/pagina_de_crear_item/pagina_de_crear_item.js"></script>
+    <script src="lib/components/pagina_de_editar_item/pagina_de_editar_item.js"></script>
+    <style>
+      html, body {
+        background-color: #888;
+      }
+    </style>
+</head>
+<body><div id="app"></div></body>.
+
+asigno window.App como una aplicación vue2 con nombre "App" con rutas [{
+  propiedad path como "/editar/item/:id_item".
+  propiedad name como "PaginaDeEditarItem".
+  propiedad component como PaginaDeEditarItem.
+  propiedad props como {}.
+}, {
+  propiedad path como "/crear/item/de/almacen/:id_almacen".
+  propiedad name como "PaginaDeCrearItem".
+  propiedad component como PaginaDeCrearItem.
+  propiedad props como {}.
+}, {
+  propiedad path como "/ver/item/:id_item".
+  propiedad name como "PaginaDeVerItem".
+  propiedad component como PaginaDeVerItem.
+  propiedad props como {}.
+}, {
+  propiedad path como "/editar/almacen/:id_almacen".
+  propiedad name como "PaginaDeEditarAlmacen".
+  propiedad component como PaginaDeEditarAlmacen.
+  propiedad props como {}.
+}, {
+  propiedad path como "/crear/almacen".
+  propiedad name como "PaginaDeCrearAlmacen".
+  propiedad component como PaginaDeCrearAlmacen.
+  propiedad props como {}.
+}, {
+  propiedad path como "/ver/almacen/:id_almacen".
+  propiedad name como "PaginaDeVerAlmacen".
+  propiedad component como PaginaDeVerAlmacen.
+  propiedad props como {}.
+}, {
+  propiedad path como "/".
+  propiedad name como "PaginaDeInicio".
+  propiedad component como PaginaDeInicio.
+  propiedad props como {}.
+}] con traducciones {
+    propiedad es como {}.
+    propiedad en como {}.
+    propiedad ca como {}.
+} con plantilla {
+  <div class="App Component Castelog-app win7">
+    <router-view :root="this"></router-view>
+    <xerrorport :root="this"></xerrorport>
+  </div>
+} con estilos {
+    html {}
+    body {}
+    .Component {}
+    .App {}
+} con lógica {
+  retorno {
+    método data donde {
+      retorno {
+        db: false,
+        errors: [],
+        autentificacion: undefined,
+        tokenDeSesion: undefined
+      }.
+    }.
+    propiedad methods como {
+      método leer_fichero con (fichero) donde {
+        si fichero no es tipo objeto lanzo un nuevo Error("Se requiere parámetro «fichero» como un objeto en método «root.leer_fichero»").
+        creo lector como un nuevo FileReader().
+        retorno una nueva Promise(una lambda con (ok, fail) donde {
+          asigno lector.onload como una lambda con (evento) donde {
+            retorno ok(evento.target.result).
+          }.
+          asigno lector.onerror como una lambda con (evento) donde {
+            retorno fail(un nuevo Error("Hubo problemas para leer el fichero")).
+          }.
+          hago lector.readAsText(fichero, "UTF-8"). 
+        }).
+      } en errores hago this.gestionar_error(error, true).
+      método leer_fichero_como_url con (fichero) donde {
+        si fichero no es tipo objeto lanzo un nuevo Error("Se requiere parámetro «fichero» como un objeto en método «root.leer_fichero_como_url»").
+        creo lector como un nuevo FileReader().
+        retorno una nueva Promise(una lambda con (ok, fail) donde {
+          asigno lector.onload como una lambda con (evento) donde {
+            retorno ok(evento.target.result).
+          }.
+          asigno lector.onerror como una lambda con (evento) donde {
+            retorno fail(un nuevo Error("Hubo problemas para leer el fichero")).
+          }.
+          hago lector.readAsDataURL(fichero). 
+        }).
+      } en errores hago this.gestionar_error(error, true).
+      método asíncrono obtener_conexion donde {
+        si this.db retorno this.db.
+        asigno this.db como asíncronamente RanasDB.connect("Mi_primera_bd", [
+          [{
+            almacen:"++id,&nombre,descripcion,creado_en,actualizado_en",
+            item: "++id,nombre,descripcion,id_almacen -> almacen.id,creado_en,actualizado_en"
+          }, una función]
+        ]).
+        retorno this.db.
+      } en errores hago this.gestionar_error(error, true).
+      método gestionar_error con (error, propagar o en su defecto false) donde {
+        si propagar {
+          lanzo error.
+        } y si no {
+          imprimo error.
+          hago this.errors.push(error).
+          hago this.$forceUpdate(true).
+        }.
+      }.
+    }.
+    propiedad watch como {}.
+    método beforeMount donde {
+      asigno this.$window como window.
+    }.
+    método mounted donde {}.
+  }.
+} montada en "#app".

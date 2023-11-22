@@ -1,0 +1,9 @@
+.xformtext .form_group {
+    padding: 8px;
+    padding-top: 12px;
+}
+.xformtext .text_input {
+    width: 100%;
+    resize: vertical;
+    min-height: 70px;
+}

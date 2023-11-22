@@ -1,0 +1,134 @@
+asigno window.PaginaDeVerAlmacen como un componente vue2 con nombre "PaginaDeVerAlmacen" con plantilla {
+  <div class="PaginaDeVerAlmacen Component">
+    <xtitle>Página de ver almacén</xtitle>
+    <xbreadcrumb>
+      <xlink href="#/">Inicio</xlink>
+      <span> » </span>
+      <span>Ver almacén</span>
+    </xbreadcrumb>
+    <xpanel v-if="almacen">
+      <xlayoutnopaddingtop>
+        <xlabel class="formitem">ID: {{ almacen.id }}</xlabel>
+        <xlabel class="formitem">Nombre: {{ almacen.nombre }}</xlabel>
+        <xlabel class="formitem">Descripción: {{ almacen.descripcion }}</xlabel>
+      </xlayoutnopaddingtop>
+      <xlayoutnopaddingtop style="text-align: right;">
+        <span v-on:click="ir_a_editar_almacen">
+          <xbutton>Ir a editar almacén</xbutton>
+        </span>
+        <span v-on:click="eliminar_almacen">
+          <xbutton>Eliminar almacén</xbutton>
+        </span>
+        <span v-on:click="ir_a_crear_item">
+          <xbutton>Ir a crear ítem</xbutton>
+        </span>
+      </xlayoutnopaddingtop>
+      <xtable v-if="items && items.length">
+        <xtablerow>
+          <xtableheader>ID</xtableheader>
+          <xtableheader>Ítem</xtableheader>
+          <xtableheader>Almacén</xtableheader>
+          <xtableheader>Descripción</xtableheader>
+        </xtablerow>
+        <xtablerow v-for="item, item_index in items" v-bind:key="'item-' + item_index">
+          <xtablecell>
+            <span v-on:click="() => ir_a_ver_item(item.id)">
+              <xbutton>{{ item.id }}</xbutton>
+            </span>
+          </xtablecell>
+          <xtablecell>
+          {{ item.nombre.substr(0,50) }}{{ item.nombre.length > 50 ? '...' : '' }}
+          </xtablecell>
+          <xtablecell>
+          {{ item.id_almacen }}
+          </xtablecell>
+          <xtablecell>
+          {{ item.descripcion.substr(0,50) }}{{ item.descripcion.length > 50 ? '...' : '' }}
+          </xtablecell>
+        </xtablerow>
+      </xtable>
+    </xpanel>
+  </div>
+} con lógica {
+  retorno {
+    propiedad props como {
+      propiedad root como {
+        propiedad type como Object.
+        propiedad required como true.
+      }.
+    }.
+    método data donde {
+      debugo "PaginaDeVerAlmacen.data".
+      retorno {
+        almacen: undefined,
+        items: undefined
+      }.
+    }.
+    propiedad methods como {
+      método asíncrono ir_a_ver_item con (id_item) donde {
+        debugo "PaginaDeVerAlmacen.ir_a_ver_item".
+        hago this.$router.history.push('/ver/item/' + id_item).
+      }.
+      método asíncrono ir_a_crear_item donde {
+        debugo "PaginaDeVerAlmacen.ir_a_crear_item".
+        hago this.$router.history.push("/crear/item/de/almacen/" + this.almacen.id).
+      }.
+      método asíncrono ir_a_editar_almacen donde {
+        debugo "PaginaDeVerAlmacen.ir_a_editar_almacen".
+        hago this.$router.history.push("/editar/almacen/" + this.almacen.id).
+      }.
+      método asíncrono eliminar_almacen donde {
+        debugo "PaginaDeVerAlmacen.eliminar_almacen".
+        creo db como asíncronamente this.root.obtener_conexion().
+        creo almacen_id como this.$route.params.id_almacen.
+        creo items_coincidentes como asíncronamente db.select("item", una lambda con (item) donde {
+          retorno item.id_almacen es igual que almacen_id.
+        }).
+        creo confirmacion como this.root.$window.confirm("¿Seguro que quieres eliminar este almacén? Se eliminarán también " + items_coincidentes.length + " ítems contenidos en este almacén.").
+        si no confirmacion retorno.
+        desde 0 hasta items_coincidentes.length {
+          creo item como items_coincidentes[index].
+          creo item_eliminado como asíncronamente db.delete("item", parseInt(item.id)).
+        }.
+        creo almacen_eliminado como asíncronamente db.delete("almacen", parseInt(almacen_id)).
+        hago this.$router.history.push("/").
+      }.
+      método asíncrono obtener_almacen donde {
+        debugo "PaginaDeVerAlmacen.obtener_almacen".
+        creo db como asíncronamente this.root.obtener_conexion().
+        creo almacen_id como parseInt(this.$route.params.id_almacen).
+        creo almacenes como asíncronamente db.select("almacen", una lambda con (almacen) donde {
+          retorno almacen.id es igual que almacen_id.
+        }).
+        asigno this.almacen como almacenes[0].
+        hago this.$forceUpdate(true).
+      } en errores hago this.gestionar_error(error, true).
+      método asíncrono obtener_items donde {
+        debugo "PaginaDeVerAlmacen.obtener_items".
+        creo db como asíncronamente this.root.obtener_conexion().
+        creo almacen_id como parseInt(this.$route.params.id_almacen).
+        creo items como asíncronamente db.select("item", una lambda con (item) donde {
+          retorno parseInt(item.id_almacen) es igual que almacen_id.
+        }).
+        asigno this.items como items.
+        hago this.$forceUpdate(true).
+      } en errores hago this.gestionar_error(error, true).
+    }.
+    propiedad watch como {}.
+    propiedad computed como {}.
+    método beforeCreate donde {}.
+    método created donde {}.
+    método beforeMount donde {}.
+    método asíncrono mounted donde {
+      debugo "PaginaDeVerAlmacen.mounted".
+      hago asíncronamente this.obtener_almacen().
+      hago asíncronamente this.obtener_items().
+    }.
+    método beforeUpdate donde {}.
+    método updated donde {}.
+    método beforeUnmount donde {}.
+    método unmounted donde {}.
+    método activated donde {}.
+    método deactivated donde {}.
+  }.
+}.

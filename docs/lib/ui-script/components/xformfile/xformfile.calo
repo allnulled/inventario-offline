@@ -1,0 +1,72 @@
+asigno UIScriptComponents.xformfile como un componente vue2 con nombre "xformfile" con plantilla {
+  <div class="Component xformfile">
+    <div class="form_group">
+      <slot></slot>
+      <div>
+        <div style="display: none;">
+          <input
+            ref="fichero"
+            class="text_input"
+            type="file"
+            :name="name"
+            :accept="inputAccept"
+            v-on:change="al_cambiar_fichero" />
+        </div>
+        <span class="cuadro_de_fichero">
+          <button v-on:click="abrir_entrada_de_fichero">Seleccionar fichero</button>
+          <span>{{ ruta_de_fichero ? ruta_de_fichero : 'No se ha seleccionado ningún fichero.' }}</span>
+        </span>
+      </div>
+    </div>
+  </div>
+} con lógica {
+  retorno {
+    propiedad props como {
+      propiedad name como {
+        propiedad type como String.
+        propiedad default como una función donde retorno "".
+      }.
+      propiedad inputAccept como {
+        propiedad type como String.
+        propiedad default como una función donde retorno "image/*".
+      }.
+    }.
+    método data donde {
+      debugo "PaginaDeVerItem.data".
+      retorno {
+        fichero_seleccionado: undefined,
+        ruta_de_fichero: undefined
+      }.
+    }.
+    propiedad methods como {
+      método obtener_fichero_seleccionado donde {
+        debugo "PaginaDeVerItem.obtener_fichero_seleccionado".
+        retorno this.fichero_seleccionado.
+      }.
+      método abrir_entrada_de_fichero donde {
+        debugo "PaginaDeVerItem.abrir_entrada_de_fichero".
+        hago this.$refs.fichero.click().
+      }.
+      método al_cambiar_fichero con (evento) donde {
+        debugo "PaginaDeVerItem.al_cambiar_fichero".
+        creo fichero como evento.target.files[0].
+        asigno this.ruta_de_fichero como fichero.name.
+        asigno this.fichero_seleccionado como fichero.
+      }.
+    }.
+    propiedad watch como {}.
+    propiedad computed como {}.
+    método beforeCreate donde {}.
+    método created donde {}.
+    método beforeMount donde {}.
+    método mounted donde {
+      debugo "PaginaDeVerItem.mounted".
+    }.
+    método beforeUpdate donde {}.
+    método updated donde {}.
+    método beforeUnmount donde {}.
+    método unmounted donde {}.
+    método activated donde {}.
+    método deactivated donde {}.
+  }.
+}.

@@ -1,0 +1,12 @@
+.xformfile .form_group {
+    padding: 8px;
+    padding-top: 12px;
+}
+.xformfile .text_input {
+    width: 100%;
+}
+.xformfile .cuadro_de_fichero {
+    display: block;
+    background-color: #BBB;
+    padding: 4px;
+}

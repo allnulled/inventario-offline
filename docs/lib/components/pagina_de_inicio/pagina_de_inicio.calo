@@ -1,0 +1,78 @@
+asigno window.PaginaDeInicio como un componente vue2 con nombre "PaginaDeInicio" con plantilla {
+  <div class="PaginaDeInicio Component">
+    <xtitle>Pagina de inicio</xtitle>
+    <xbreadcrumb>
+      <span>Inicio</span>
+    </xbreadcrumb>
+    <xtable v-if="almacenes && almacenes.length">
+      <xtablerow>
+        <xtableheader>ID</xtableheader>
+        <xtableheader>Almacén</xtableheader>
+        <xtableheader>Descripción</xtableheader>
+      </xtablerow>
+      <xtablerow v-for="almacen, almacen_index in almacenes" v-bind:key="'almacen-' + almacen_index">
+        <xtablecell>
+          <span v-on:click="() => ir_a_ver_almacen(almacen.id)">
+            <xbutton>{{ almacen.id }}</xbutton>
+          </span>
+        </xtablecell>
+        <xtablecell class="text_split_anywhere">{{ almacen.nombre.substr(0,50) }}{{  almacen.nombre.length > 50 ? '...' : '' }}</xtablecell>
+        <xtablecell class="text_split_anywhere">{{ almacen.descripcion.substr(0, 50) }}{{  almacen.descripcion.length > 50 ? '...' : '' }}</xtablecell>
+      </xtablerow>
+    </xtable>
+    <xlayout v-else="">
+      <xparagraph>No se encontraron almacenes actualmente.</xparagraph>
+    </xlayout>
+    <xlayout style="text-align: right;">
+      <span v-on:click="ir_a_crear_almacen">
+        <xbutton>Ir a crear almacén</xbutton>
+      </span>
+    </xlayout>
+  </div>
+} con lógica {
+  retorno {
+    propiedad props como {
+      propiedad root como {
+        propiedad type como Object.
+        propiedad required como true.
+      }.
+    }.
+    método data donde {
+      debugo "PaginaDeInicio.data".
+      retorno {
+        almacenes: []
+      }.
+    }.
+    propiedad methods como {
+      método ir_a_ver_almacen con (id_almacen) donde {
+        debugo "PaginaDeInicio.ir_a_ver_almacen".
+        hago this.$router.history.push("/ver/almacen/" + id_almacen).
+      }.
+      método ir_a_crear_almacen donde {
+        debugo "PaginaDeInicio.ir_a_crear_almacen".
+        hago this.$router.history.push("/crear/almacen").
+      }.
+      método asíncrono obtener_almacenes donde {
+        debugo "PaginaDeInicio.obtener_almacenes".
+        creo db como asíncronamente this.root.obtener_conexion().
+        asigno this.almacenes como asíncronamente db.select("almacen").
+        hago this.$forceUpdate(true).
+      }.
+    }.
+    propiedad watch como {}.
+    propiedad computed como {}.
+    método beforeCreate donde {}.
+    método created donde {}.
+    método beforeMount donde {}.
+    método asíncrono mounted donde {
+      debugo "PaginaDeInicio.mounted".
+      hago asíncronamente this.obtener_almacenes().
+    }.
+    método beforeUpdate donde {}.
+    método updated donde {}.
+    método beforeUnmount donde {}.
+    método unmounted donde {}.
+    método activated donde {}.
+    método deactivated donde {}.
+  }.
+}.

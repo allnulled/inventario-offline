@@ -1,0 +1,74 @@
+asigno window.PaginaDeCrearItem como un componente vue2 con nombre "PaginaDeCrearItem" con plantilla {
+  <div class="PaginaDeCrearItem Component">
+    <xtitle>Página de crear ítem</xtitle>
+    <xbreadcrumb>
+      <xlink href="#/">Inicio</xlink>
+      <span> » </span>
+      <xlink :href="'#/ver/almacen/' + $route.params.id_almacen">Ver almacén</xlink>
+      <span> » </span>
+      <span>Crear ítem</span>
+    </xbreadcrumb>
+    <xpanel>
+      <xform>
+        <xformfile ref="imagen" name="imagen">Imagen del ítem:</xformfile>
+        <xformfield ref="nombre" name="nombre">Nombre del ítem:</xformfield>
+        <xformtext ref="descripcion" name="descripcion">Descripción del ítem:</xformtext>
+      </xform>
+    </xpanel>
+    <xlayoutnopaddingtop style="text-align: right;">
+      <span v-on:click="crear_item">
+        <xbutton>Crear ítem</xbutton>
+      </span>
+    </xlayoutnopaddingtop>
+  </div>
+} con lógica {
+  retorno {
+    propiedad props como {
+      propiedad root como {
+        propiedad type como Object.
+        propiedad required como true.
+      }.
+    }.
+    método data donde {
+      debugo "PaginaDeEditarAlmacen.data".
+      retorno {
+        almacen: []
+      }.
+    }.
+    propiedad methods como {
+      método asíncrono crear_item donde {
+        debugo "PaginaDeEditarAlmacen.crear_item".
+        creo nombre como this.$refs.nombre.$el.querySelector("input").value.
+        creo descripcion como this.$refs.descripcion.$el.querySelector("textarea").value.
+        creo variable imagen como undefined.
+        creo fichero_imagen como this.$refs.imagen.obtener_fichero_seleccionado().
+        si fichero_imagen no es tipo indefinido {
+          asigno imagen como asíncronamente this.root.leer_fichero_como_url(fichero_imagen).
+        }.
+        si nombre.length es igual que 0 lanzo un nuevo Error("Se requiere parámetro «nombre» tener una cantidad mínima de texto").
+        creo db como asíncronamente this.root.obtener_conexion().
+        creo id_almacen como asíncronamente db.insert("item", {
+          nombre,
+          descripcion,
+          imagen,
+          id_almacen: this.$route.params.id_almacen,
+          creado_en: una nueva Date(),
+          actualizado_en: una nueva Date()
+        }).
+        hago this.$router.history.push("/ver/item/" + id_almacen).
+      } en errores hago this.root.gestionar_error(error).
+    }.
+    propiedad watch como {}.
+    propiedad computed como {}.
+    método beforeCreate donde {}.
+    método created donde {}.
+    método beforeMount donde {}.
+    método mounted donde {}.
+    método beforeUpdate donde {}.
+    método updated donde {}.
+    método beforeUnmount donde {}.
+    método unmounted donde {}.
+    método activated donde {}.
+    método deactivated donde {}.
+  }.
+}.

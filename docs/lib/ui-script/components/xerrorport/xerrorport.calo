@@ -1,0 +1,78 @@
+asigno UIScriptComponents.xerrorport como un componente vue2 con nombre "xerrorport" con plantilla {
+  <div class="Component xerrorport">
+    <div v-if="root.errors && root.errors.length" style="overflow:scroll;">
+      <div>
+        <div>
+          <div>
+            <div v-for="error, error_index in root.errors" v-bind:key="'error-' + error_index">
+              <xwindow>
+                <xwindowtitle>{{ error.name }}</xwindowtitle>
+                <xwindowbody>
+                  <xlayout>
+                    <div>{{ error.name }}: {{ error.message }}.</div>
+                    <xcollapsible>
+                      <xcollapsibleitem>Detalles</xcollapsibleitem>
+                      <xparagraph>
+                      {{ error.stack }}
+                      </xparagraph>
+                    </xcollapsible>
+                    <div v-if="error.response">
+                      <div>{{ error.response.data.error.name }}</div>
+                      <div>{{ error.response.data.error.message }}</div>
+                      <div>
+                        <xcollapsible>
+                          <xcollapsibleitem>Detalles</xcollapsibleitem>
+                          <xparagraph>
+                          {{ error.response.data.error.stack }}
+                          </xparagraph>
+                        </xcollapsible>
+                      </div>
+                    </div>
+                    <div style="text-align: right;">
+                      <button v-on:click="() => eliminar_error(error_index)">Aceptar</button>
+                    </div>
+                  </xlayout>
+                </xwindowbody>
+                <xwindowfooter>
+                  <xwindowfooteritem>Error</xwindowfooteritem>
+                </xwindowfooter>
+              </xwindow>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+} con lógica {
+  retorno {
+    propiedad props como {
+      propiedad root como {
+        propiedad type como Object.
+        propiedad required como true.
+      }.
+    }.
+    método data donde {
+      retorno {
+
+      }.
+    }.
+    propiedad methods como {
+      método eliminar_error con (error_index) donde {
+        hago this.root.errors.splice(error_index, 1).
+        hago this.root.$forceUpdate(true).
+      }.
+    }.
+    propiedad watch como {}.
+    propiedad computed como {}.
+    método beforeCreate donde {}.
+    método created donde {}.
+    método beforeMount donde {}.
+    método mounted donde {}.
+    método beforeUpdate donde {}.
+    método updated donde {}.
+    método beforeUnmount donde {}.
+    método unmounted donde {}.
+    método activated donde {}.
+    método deactivated donde {}.
+  }.
+}.

@@ -1,0 +1,7 @@
+.xtablecell {
+    border: 0px solid #CCC;
+    border-top: 1px solid #333;
+    border-bottom: 0px solid #333;
+    background-color: #DDD;
+    border-left: 1px solid #AAA;
+}

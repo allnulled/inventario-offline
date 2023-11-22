@@ -1,0 +1,58 @@
+asigno window.PaginaDeCrearAlmacen como un componente vue2 con nombre "PaginaDeCrearAlmacen" con plantilla {
+  <div class="PaginaDeCrearAlmacen Component">
+    <xtitle>Página de crear almacén</xtitle>
+    <xbreadcrumb>
+      <xlink href="#/">Inicio</xlink>
+      <span> » </span>
+      <span>Crear almacén</span>
+    </xbreadcrumb>
+    <xpanel>
+      <xform>
+        <xformfield ref="nombre" name="nombre">Nombre del almacén:</xformfield>
+        <xformtext ref="descripcion" name="descripcion">Descripción del almacén:</xformtext>
+      </xform>
+    </xpanel>
+    <xlayoutnopaddingtop style="text-align: right;">
+      <span v-on:click="crear_almacen">
+        <xbutton>Crear almacén</xbutton>
+      </span>
+    </xlayoutnopaddingtop>
+  </div>
+} con lógica {
+  retorno {
+    propiedad props como {
+      propiedad root como {
+        propiedad type como Object.
+        propiedad required como true.
+      }.
+    }.
+    método data donde {
+      debugo "PaginaDeCrearAlmacen.data".
+      retorno {
+        almacenes: []
+      }.
+    }.
+    propiedad methods como {
+      método asíncrono crear_almacen donde {
+        debugo "PaginaDeCrearAlmacen.crear_almacen".
+        creo nombre como this.$refs.nombre.$el.querySelector("input").value.
+        creo descripcion como this.$refs.descripcion.$el.querySelector("textarea").value.
+        creo db como asíncronamente this.root.obtener_conexion().
+        creo id_almacen como asíncronamente db.insert("almacen", { nombre, descripcion }).
+        hago this.$router.history.push("/ver/almacen/" + id_almacen).
+      }.
+    }.
+    propiedad watch como {}.
+    propiedad computed como {}.
+    método beforeCreate donde {}.
+    método created donde {}.
+    método beforeMount donde {}.
+    método mounted donde {}.
+    método beforeUpdate donde {}.
+    método updated donde {}.
+    método beforeUnmount donde {}.
+    método unmounted donde {}.
+    método activated donde {}.
+    método deactivated donde {}.
+  }.
+}.
