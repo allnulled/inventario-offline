@@ -7,6 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
+    "build-ui": "cp docs/index.1.html docs/index.html",
     "start": "npx http-server -c-1 docs -o index.1.html"
   },
   "keywords": [],
