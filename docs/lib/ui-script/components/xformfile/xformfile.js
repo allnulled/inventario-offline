@@ -42,7 +42,7 @@ throw error;
 }
 },
 data() {try {
-console.log('[DEBUG]', "PaginaDeVerItem.data");
+console.log('[DEBUG]', "xformfile.data");
 return { fichero_seleccionado:undefined,
 ruta_de_fichero:undefined
 };
@@ -53,7 +53,7 @@ throw error;
 
 },
 methods:{ obtener_fichero_seleccionado() {try {
-console.log('[DEBUG]', "PaginaDeVerItem.obtener_fichero_seleccionado");
+console.log('[DEBUG]', "xformfile.obtener_fichero_seleccionado");
 return this.fichero_seleccionado;
 } catch(error) {
 console.log(error);
@@ -62,7 +62,7 @@ throw error;
 
 },
 abrir_entrada_de_fichero() {try {
-console.log('[DEBUG]', "PaginaDeVerItem.abrir_entrada_de_fichero");
+console.log('[DEBUG]', "xformfile.abrir_entrada_de_fichero");
 this.$refs.fichero.click(  );
 } catch(error) {
 console.log(error);
@@ -71,7 +71,7 @@ throw error;
 
 },
 al_cambiar_fichero( evento ) {try {
-console.log('[DEBUG]', "PaginaDeVerItem.al_cambiar_fichero");
+console.log('[DEBUG]', "xformfile.al_cambiar_fichero");
 const fichero = evento.target.files[ 0 ];
 this.ruta_de_fichero = fichero.name;
 this.fichero_seleccionado = fichero;
@@ -93,7 +93,7 @@ created() {
 beforeMount() {
 },
 mounted() {try {
-console.log('[DEBUG]', "PaginaDeVerItem.mounted");
+console.log('[DEBUG]', "xformfile.mounted");
 } catch(error) {
 console.log(error);
 throw error;

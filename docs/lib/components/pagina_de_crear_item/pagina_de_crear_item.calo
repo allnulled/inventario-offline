@@ -10,9 +10,46 @@ asigno window.PaginaDeCrearItem como un componente vue2 con nombre "PaginaDeCrea
     </xbreadcrumb>
     <xpanel>
       <xform>
-        <xformfile ref="imagen" name="imagen">Imagen del ítem:</xformfile>
-        <xformfield ref="nombre" name="nombre">Nombre del ítem:</xformfield>
-        <xformtext ref="descripcion" name="descripcion">Descripción del ítem:</xformtext>
+        <div class="xformfile">
+          <div class="form_group">
+            <div>Imagen del ítem:</div>
+            <span class="cuadro_de_fichero">
+              <button v-on:click="abrir_entrada_de_fichero">Seleccionar fichero</button>
+              <span>{{ ruta_de_fichero ? ruta_de_fichero : 'No se ha seleccionado ningún fichero.' }}</span>
+            </span>
+            <div style="display: none;">
+              <div ref="fichero">
+                <input
+                  class="text_input"
+                  ref="imagen_del_item"
+                  type="file"
+                  accept="image/*"
+                  v-on:change="al_cambiar_fichero" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="xformfield">
+          <div class="form_group">
+            <div>Nombre del ítem:</div>
+            <div ref="nombre">
+              <input
+                class="text_input"
+                type="text"
+                v-model="nombre_del_item" />
+            </div>
+          </div>
+        </div>
+        <div class="xformtext">
+          <div class="form_group">
+            <div>Descripción del ítem:</div>
+            <div ref="descripcion">
+              <textarea
+                class="text_input"
+                v-model="descripcion_del_item"></textarea>
+            </div>
+          </div>
+        </div>
       </xform>
     </xpanel>
     <xlayoutnopaddingtop style="text-align: right;">
@@ -30,18 +67,32 @@ asigno window.PaginaDeCrearItem como un componente vue2 con nombre "PaginaDeCrea
       }.
     }.
     método data donde {
-      debugo "PaginaDeEditarAlmacen.data".
+      debugo "PaginaDeCrearItem.data".
       retorno {
+        nombre_del_item: undefined,
+        descripcion_del_item: undefined,
+        ruta_de_fichero: undefined,
+        fichero_seleccionado: undefined,
         almacen: []
       }.
     }.
     propiedad methods como {
+      método abrir_entrada_de_fichero donde {
+        debugo "PaginaDeCrearItem.abrir_entrada_de_fichero".
+        hago this.$refs.imagen_del_item.click().
+      }.
+      método al_cambiar_fichero con (evento) donde {
+        debugo "PaginaDeCrearItem.al_cambiar_fichero".
+        creo fichero como evento.target.files[0].
+        asigno this.ruta_de_fichero como fichero.name.
+        asigno this.fichero_seleccionado como fichero.
+      } en errores hago this.root.gestionar_error(error).
       método asíncrono crear_item donde {
-        debugo "PaginaDeEditarAlmacen.crear_item".
-        creo nombre como this.$refs.nombre.$el.querySelector("input").value.
-        creo descripcion como this.$refs.descripcion.$el.querySelector("textarea").value.
+        debugo "PaginaDeCrearItem.crear_item".
+        creo nombre como this.$refs.nombre.querySelector("input").value.
+        creo descripcion como this.$refs.descripcion.querySelector("textarea").value.
         creo variable imagen como undefined.
-        creo fichero_imagen como this.$refs.imagen.obtener_fichero_seleccionado().
+        creo fichero_imagen como this.fichero_seleccionado.
         si fichero_imagen no es tipo indefinido {
           asigno imagen como asíncronamente this.root.leer_fichero_como_url(fichero_imagen).
         }.

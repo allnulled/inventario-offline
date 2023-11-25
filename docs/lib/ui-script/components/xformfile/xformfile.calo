@@ -32,7 +32,7 @@ asigno UIScriptComponents.xformfile como un componente vue2 con nombre "xformfil
       }.
     }.
     método data donde {
-      debugo "PaginaDeVerItem.data".
+      debugo "xformfile.data".
       retorno {
         fichero_seleccionado: undefined,
         ruta_de_fichero: undefined
@@ -40,15 +40,15 @@ asigno UIScriptComponents.xformfile como un componente vue2 con nombre "xformfil
     }.
     propiedad methods como {
       método obtener_fichero_seleccionado donde {
-        debugo "PaginaDeVerItem.obtener_fichero_seleccionado".
+        debugo "xformfile.obtener_fichero_seleccionado".
         retorno this.fichero_seleccionado.
       }.
       método abrir_entrada_de_fichero donde {
-        debugo "PaginaDeVerItem.abrir_entrada_de_fichero".
+        debugo "xformfile.abrir_entrada_de_fichero".
         hago this.$refs.fichero.click().
       }.
       método al_cambiar_fichero con (evento) donde {
-        debugo "PaginaDeVerItem.al_cambiar_fichero".
+        debugo "xformfile.al_cambiar_fichero".
         creo fichero como evento.target.files[0].
         asigno this.ruta_de_fichero como fichero.name.
         asigno this.fichero_seleccionado como fichero.
@@ -60,7 +60,7 @@ asigno UIScriptComponents.xformfile como un componente vue2 con nombre "xformfil
     método created donde {}.
     método beforeMount donde {}.
     método mounted donde {
-      debugo "PaginaDeVerItem.mounted".
+      debugo "xformfile.mounted".
     }.
     método beforeUpdate donde {}.
     método updated donde {}.
