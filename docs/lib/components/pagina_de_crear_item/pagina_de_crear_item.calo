@@ -80,7 +80,7 @@ asigno window.PaginaDeCrearItem como un componente vue2 con nombre "PaginaDeCrea
       método abrir_entrada_de_fichero donde {
         debugo "PaginaDeCrearItem.abrir_entrada_de_fichero".
         hago this.$refs.imagen_del_item.click().
-      }.
+      } en errores hago this.root.gestionar_error(error).
       método al_cambiar_fichero con (evento) donde {
         debugo "PaginaDeCrearItem.al_cambiar_fichero".
         creo fichero como evento.target.files[0].

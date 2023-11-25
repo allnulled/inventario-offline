@@ -11,14 +11,46 @@ window.PaginaDeEditarItem = Castelog.metodos.un_componente_vue2("PaginaDeEditarI
  + "    </xbreadcrumb>"
  + "    <xpanel v-if=\"item\">"
  + "      <xform>"
- + "        <xformfile ref=\"imagen\" name=\"imagen\">"
- + "          <div>Imagen del ítem:</div>"
- + "        </xformfile>"
- + "        <template v-if=\"item.imagen\">"
- + "          <img :src=\"item.imagen\" />"
- + "        </template>"
- + "        <xformfield ref=\"nombre\" name=\"nombre\" :input-value=\"item.nombre\">Nombre del ítem:</xformfield>"
- + "        <xformtext ref=\"descripcion\" name=\"descripcion\" :input-value=\"item.descripcion\">Descripción del ítem:</xformtext>"
+ + "        <div class=\"xformfield\">"
+ + "          <div class=\"form_group\">"
+ + "            <div>Nombre del ítem:</div>"
+ + "            <div ref=\"nombre\">"
+ + "              <input"
+ + "                class=\"text_input\""
+ + "                type=\"text\""
+ + "                v-model=\"item.nombre\" />"
+ + "            </div>"
+ + "          </div>"
+ + "        </div>"
+ + "        <div class=\"xformtext\">"
+ + "          <div class=\"form_group\">"
+ + "            <div>Descripción del ítem:</div>"
+ + "            <div ref=\"descripcion\">"
+ + "              <textarea"
+ + "                class=\"text_input\""
+ + "                v-model=\"item.descripcion\"></textarea>"
+ + "            </div>"
+ + "          </div>"
+ + "        </div>"
+ + "        <div class=\"xformfile\">"
+ + "          <div class=\"form_group\">"
+ + "            <div>Imagen del ítem:</div>"
+ + "            <span class=\"cuadro_de_fichero\">"
+ + "              <button v-on:click=\"abrir_entrada_de_fichero\">Seleccionar fichero</button>"
+ + "              <span>{{ ruta_de_fichero ? ruta_de_fichero : 'No se ha seleccionado ningún fichero.' }}</span>"
+ + "            </span>"
+ + "            <div style=\"display: none;\">"
+ + "              <div ref=\"fichero\">"
+ + "                <input"
+ + "                  class=\"text_input\""
+ + "                  ref=\"imagen_del_item\""
+ + "                  type=\"file\""
+ + "                  accept=\"image/*\""
+ + "                  v-on:change=\"al_cambiar_fichero\" />"
+ + "              </div>"
+ + "            </div>"
+ + "          </div>"
+ + "        </div>"
  + "      </xform>"
  + "    </xpanel>"
  + "    <xlayoutnopaddingtop style=\"text-align: right;\">"
@@ -33,7 +65,11 @@ required:true
 },
 data() {try {
 console.log('[DEBUG]', "PaginaDeEditarItem.data");
-return { item:undefined
+return { nombre_del_item:undefined,
+descripcion_del_item:undefined,
+ruta_de_fichero:undefined,
+fichero_seleccionado:undefined,
+item:undefined
 };
 } catch(error) {
 console.log(error);
@@ -41,11 +77,25 @@ throw error;
 }
 
 },
-methods:{ async guardar_item() {try {
+methods:{ abrir_entrada_de_fichero() {try {
+console.log('[DEBUG]', "PaginaDeEditarItem.abrir_entrada_de_fichero");
+this.$refs.imagen_del_item.click(  );
+} catch(error) {
+this.root.gestionar_error( error );}
+},
+al_cambiar_fichero( evento ) {try {
+console.log('[DEBUG]', "PaginaDeEditarItem.al_cambiar_fichero");
+const fichero = evento.target.files[ 0 ];
+this.ruta_de_fichero = fichero.name;
+this.fichero_seleccionado = fichero;
+} catch(error) {
+this.root.gestionar_error( error );}
+},
+async guardar_item() {try {
 console.log('[DEBUG]', "PaginaDeEditarItem.guardar_item");
-const nombre = this.$refs.nombre.$el.querySelector( "input" ).value;
-const descripcion = this.$refs.descripcion.$el.querySelector( "textarea" ).value;
-const imagen_fichero = (await this.$refs.imagen.obtener_fichero_seleccionado(  ));
+const nombre = this.$refs.nombre.querySelector( "input" ).value;
+const descripcion = this.$refs.descripcion.querySelector( "textarea" ).value;
+const imagen_fichero = (await this.fichero_seleccionado);
 const actualizado_en = new Date(  );
 let imagen = undefined;
 if((!(typeof imagen_fichero === 'undefined'))) {

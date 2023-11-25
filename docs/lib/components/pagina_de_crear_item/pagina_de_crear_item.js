@@ -81,10 +81,7 @@ methods:{ abrir_entrada_de_fichero() {try {
 console.log('[DEBUG]', "PaginaDeCrearItem.abrir_entrada_de_fichero");
 this.$refs.imagen_del_item.click(  );
 } catch(error) {
-console.log(error);
-throw error;
-}
-
+this.root.gestionar_error( error );}
 },
 al_cambiar_fichero( evento ) {try {
 console.log('[DEBUG]', "PaginaDeCrearItem.al_cambiar_fichero");
